@@ -4,42 +4,45 @@
   <head>
     <link rel="stylesheet" href="{% static 'css/my-style.css' %}" />
   </head>
-  <body>
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nombre</th>
-          <th>Descripcion</th>
-          <th>Precio</th>
-          <th>Stock</th>
-          <th>Imagen</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for producto in productos %}
-        <tr>
-          <td>{{ producto.id }}</td>
-          <td>{{ producto.name }}</td>
-          <td>{{ producto.description }}</td>
-          <td>{{ producto.price }}</td>
-          <td>{{ producto.stock }}</td>
-          <td><img src="{{ producto.img_url }}" alt=""></td>
-          <td>
-            <a
+  <body style="background-color: #9F59FF;">
+    <div class="container-fluid text-center top-background p-3">
+      <h1 class="text-center text-white">Tiendita</h1>
+      <a
+      class="btn btn-secondary m-2 text-white"
+      href="/agregarProducto"
+      ><i class="fa-solid fa-plus" style="color: #ffffff;"></i> Agregar producto</a>
+    </div>
+    <div class="container">
+      <div class="row justify-content-center align-items-center">
+      {% for producto in productos %}
+        <div class="col-3">
+          <div class="card text-bg-primary text-center mt-2 mb-2" style="width: 15rem;">
+            <img src="{{ producto.img_url }}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h6 class="card-text">ID: {{ producto.id }}</h6>
+              <h5 class="card-title">{{ producto.name }}</h5>
+              <h6 class="card-text">${{ producto.price }}</h6>
+              <h6 class="card-text">{{ producto.description }}</h6>
+              <h6 class="card-text">Stock:{{ producto.stock }}</h6>
+              <a
+              class="btn btn-secondary m-2"
               href="/actualizarProducto/{{ producto.id }}"
-              >Modificar</a
-            >
-          </td>
-          <td>
-            <a
-              href="/eliminarProducto/{{ producto.id }}"
-              >Eliminar</a
-            >
-          </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+              ><i class="fa-solid fa-pen-to-square" style="color: white;"></i></a>
+              <a
+                    class="btn btn-danger m-2"
+                    href="/eliminarProducto/{{ producto.id }}"
+                    ><i class="fa-solid fa-trash" style="color: white;"></i></a>
+            </div>
+          </div>
+        </div>
+        
+      {% endfor %}
+      </div>
+      
+    </div>
   </body>
+  <script
+  src="https://kit.fontawesome.com/fb2d6595ca.js"
+  crossorigin="anonymous"
+></script>
 </html>

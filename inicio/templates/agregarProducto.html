@@ -1,20 +1,26 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
   <head>
+    <link rel="stylesheet" href="{% static 'css/my-style.css' %}" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/mate
 rialize.min.css"
     />
+  </head>
+  <body>
+    <div class="container mt-5">
+      
+    <h4 class="text-center">Producto</h3>
+    <form method="POST">
+      {{ form.as_p }} {% csrf_token %}
+      <input class="btn btn" type="submit" value="Agregar Producto" />
+    </form>
+    </div>
+  </body>
+  
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materi
 alize.min.js"></script>
-  </head>
-  <body>
-    <div>Producto</div>
-    <form method="POST">
-      {{ form.as_p }} {% csrf_token %}
-      <input type="submit" value="Agregar Producto" />
-    </form>
-  </body>
 </html>

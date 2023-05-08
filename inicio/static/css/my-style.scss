@@ -1,0 +1,32 @@
+// custom colors
+$primary:#340059;
+$secondary: #9F59FF;
+$success: #9F7EFF;
+$black: #000000;
+$light:#ffffff;
+
+*{
+    font-family:'Itim', sans-serif
+}
+
+.bottom-background {
+  // background: linear-gradient(to bottom, $body-color-1, $body-color-2);
+  background: $secondary;
+}
+.top-background{
+    background: $primary;
+}
+
+.card{
+    margin: auto;
+    width: 50%;
+}
+
+.img-custom{
+    border-radius: 15%;
+    width: 150px;
+    height: auto;
+}
+
+@import "../../../node_modules/bootstrap/scss/bootstrap.scss";
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
