@@ -5,12 +5,39 @@
     <link rel="stylesheet" href="{% static 'css/my-style.css' %}" />
   </head>
   <body style="background-color: #9F59FF;">
-    <div class="container-fluid text-center top-background p-3">
-      <h1 class="text-center text-white">Tiendita</h1>
+    <div class="container-fluid text-center top-background pt-3">
+      <h1 class="text-center text-white"><i class="fa-solid fa-shop" style="color: #ffffff;"></i> Tiendita</h1>
       <a
-      class="btn btn-secondary m-2 text-white"
+      class="btn btn-danger m-2 text-white"
       href="/agregarProducto"
       ><i class="fa-solid fa-plus" style="color: #ffffff;"></i> Agregar producto</a>
+    </div>
+    <div class="container-fluid text-center top-background pb-3">
+      <a
+      class="btn btn-secondary m-2 text-white"
+      style="width: 240px;"
+      href="/productos/computadoras"
+      ><i class="fa-solid fa-desktop" style="color: #ffffff;"></i> Computadoras y portátiles</a>
+      <a
+      class="btn btn-secondary m-2 text-white"
+      style="width: 240px;"
+      href="/productos/moviles"
+      ><i class="fa-solid fa-mobile-screen" style="color: #ffffff;"></i> Dispositivos móviles</a>
+      <a
+      class="btn btn-secondary m-2 text-white"
+      style="width: 240px;"
+      href="/productos/componentes"
+      ><i class="fa-solid fa-microchip" style="color: #ffffff;"></i> Componentes</a>
+      <a
+      class="btn btn-secondary m-2 text-white"
+      style="width: 240px;"
+      href="/productos/accesorios"
+      ><i class="fa-solid fa-headphones" style="color: #ffffff;"></i> Accesorios</a>
+      <a
+      class="btn btn-secondary m-2 text-white"
+      style="width: 240px;"
+      href="/productos"
+      ><i class="fa-solid fa-eye" style="color: #ffffff;"></i> Ver todo</a>
     </div>
     <div class="container">
       <div class="row justify-content-center align-items-center">

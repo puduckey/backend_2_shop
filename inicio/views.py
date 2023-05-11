@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from inicio.models import Producto
+from inicio.models import Producto, Categoria
 from inicio.forms import ProductoForm
 from . import forms
 
@@ -9,6 +9,30 @@ from . import forms
 def listadoProductos(request):
     productos= Producto.objects.all()
     data = {'productos':productos}
+    return render(request, 'productos.html', data)
+
+def listaComputadoras(request):
+    categoria = Categoria.objects.get(nombre="Computadoras y portátiles")
+    productos = Producto.objects.filter(categoria=categoria)
+    data = {'productos': productos}
+    return render(request, 'productos.html', data)
+
+def listaMoviles(request):
+    categoria = Categoria.objects.get(nombre="Dispositivos móviles")
+    productos = Producto.objects.filter(categoria=categoria)
+    data = {'productos': productos}
+    return render(request, 'productos.html', data)
+
+def listaComponentes(request):
+    categoria = Categoria.objects.get(nombre="Componentes")
+    productos = Producto.objects.filter(categoria=categoria)
+    data = {'productos': productos}
+    return render(request, 'productos.html', data)
+
+def listaAccesorios(request):
+    categoria = Categoria.objects.get(nombre="Accesorios")
+    productos = Producto.objects.filter(categoria=categoria)
+    data = {'productos': productos}
     return render(request, 'productos.html', data)
 
 def agregarProducto(request):
