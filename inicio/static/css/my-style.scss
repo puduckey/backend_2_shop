@@ -22,11 +22,16 @@ $light:#ffffff;
     width: 50%;
 }
 
-.img-custom{
-    border-radius: 15%;
-    width: 150px;
-    height: auto;
+.card-img-top{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; // Ajusta la imagen para que mantenga su relación de aspecto y complete el espacio
+    background-color: white; // Establece el color de fondo como blanco
 }
+
+
 
 @import "../../../node_modules/bootstrap/scss/bootstrap.scss";
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+

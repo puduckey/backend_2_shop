@@ -3,48 +3,84 @@
 <html>
   <head>
     <link rel="stylesheet" href="{% static 'css/my-style.css' %}" />
+    <style>
+      .mi-clase-personalizada {
+        padding-top: 0px;
+        padding-bottom: 0px;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+      .perso {
+        width: 220px;
+        height: 220px;
+        background-color: #ffffff;
+        margin: 10px;
+        border-radius: 10px;
+      }
+    </style>
   </head>
-  <body style="background-color: #9F59FF;">
+  <body style="background-color: #9f59ff">
     <div class="container-fluid text-center top-background pt-3">
-      <h1 class="text-center text-white"><i class="fa-solid fa-shop" style="color: #ffffff;"></i> Tiendita</h1>
-      <a
-      class="btn btn-danger m-2 text-white"
-      href="/agregarProducto"
-      ><i class="fa-solid fa-plus" style="color: #ffffff;"></i> Agregar producto</a>
+      <h1 class="text-center text-white">
+        <i class="fa-solid fa-shop" style="color: #ffffff"></i> Tiendita
+      </h1>
+      <a class="btn btn-danger m-2 text-white" href="/agregarProducto"
+        ><i class="fa-solid fa-plus" style="color: #ffffff"></i> Agregar
+        producto</a
+      >
     </div>
     <div class="container-fluid text-center top-background pb-3">
       <a
-      class="btn btn-secondary m-2 text-white"
-      style="width: 240px;"
-      href="/productos/computadoras"
-      ><i class="fa-solid fa-desktop" style="color: #ffffff;"></i> Computadoras y portátiles</a>
+        class="btn btn-secondary m-2 text-white"
+        style="width: 240px"
+        href="/productos/computadoras"
+        ><i class="fa-solid fa-desktop" style="color: #ffffff"></i> Computadoras
+        y portátiles</a
+      >
       <a
-      class="btn btn-secondary m-2 text-white"
-      style="width: 240px;"
-      href="/productos/moviles"
-      ><i class="fa-solid fa-mobile-screen" style="color: #ffffff;"></i> Dispositivos móviles</a>
+        class="btn btn-secondary m-2 text-white"
+        style="width: 240px"
+        href="/productos/moviles"
+        ><i class="fa-solid fa-mobile-screen" style="color: #ffffff"></i>
+        Dispositivos móviles</a
+      >
       <a
-      class="btn btn-secondary m-2 text-white"
-      style="width: 240px;"
-      href="/productos/componentes"
-      ><i class="fa-solid fa-microchip" style="color: #ffffff;"></i> Componentes</a>
+        class="btn btn-secondary m-2 text-white"
+        style="width: 240px"
+        href="/productos/componentes"
+        ><i class="fa-solid fa-microchip" style="color: #ffffff"></i>
+        Componentes</a
+      >
       <a
-      class="btn btn-secondary m-2 text-white"
-      style="width: 240px;"
-      href="/productos/accesorios"
-      ><i class="fa-solid fa-headphones" style="color: #ffffff;"></i> Accesorios</a>
+        class="btn btn-secondary m-2 text-white"
+        style="width: 240px"
+        href="/productos/accesorios"
+        ><i class="fa-solid fa-headphones" style="color: #ffffff"></i>
+        Accesorios</a
+      >
       <a
-      class="btn btn-secondary m-2 text-white"
-      style="width: 240px;"
-      href="/productos"
-      ><i class="fa-solid fa-eye" style="color: #ffffff;"></i> Ver todo</a>
+        class="btn btn-secondary m-2 text-white"
+        style="width: 240px"
+        href="/productos"
+        ><i class="fa-solid fa-eye" style="color: #ffffff"></i> Ver todo</a
+      >
     </div>
     <div class="container">
       <div class="row justify-content-center align-items-center">
-      {% for producto in productos %}
+        {% for producto in productos %}
         <div class="col-3">
-          <div class="card text-bg-primary text-center mt-2 mb-2" style="width: 15rem;">
-            <img src="{{ producto.img_url }}" class="card-img-top" alt="...">
+          <div
+            class="card text-bg-primary text-center mt-2 mb-2"
+            style="width: 15rem"
+          >
+            <div class="container-fluid p-3 perso">
+              <img
+                src="{{ producto.img_url }}"
+                class="mi-clase-personalizada"
+                alt="..."
+              />
+            </div>
             <div class="card-body">
               <h6 class="card-text">ID: {{ producto.id }}</h6>
               <h5 class="card-title">{{ producto.name }}</h5>
@@ -52,24 +88,25 @@
               <h6 class="card-text">{{ producto.description }}</h6>
               <h6 class="card-text">Stock:{{ producto.stock }}</h6>
               <a
-              class="btn btn-secondary m-2"
-              href="/actualizarProducto/{{ producto.id }}"
-              ><i class="fa-solid fa-pen-to-square" style="color: white;"></i></a>
+                class="btn btn-secondary m-2"
+                href="/actualizarProducto/{{ producto.id }}"
+                ><i class="fa-solid fa-pen-to-square" style="color: white"></i
+              ></a>
               <a
-                    class="btn btn-danger m-2"
-                    href="/eliminarProducto/{{ producto.id }}"
-                    ><i class="fa-solid fa-trash" style="color: white;"></i></a>
+                class="btn btn-danger m-2"
+                href="/eliminarProducto/{{ producto.id }}"
+                ><i class="fa-solid fa-trash" style="color: white"></i
+              ></a>
             </div>
           </div>
         </div>
-        
-      {% endfor %}
+
+        {% endfor %}
       </div>
-      
     </div>
   </body>
   <script
-  src="https://kit.fontawesome.com/fb2d6595ca.js"
-  crossorigin="anonymous"
-></script>
+    src="https://kit.fontawesome.com/fb2d6595ca.js"
+    crossorigin="anonymous"
+  ></script>
 </html>
