@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from inicio.models import Producto, Categoria
+from inicio.models import Producto, Categoria, Valorizacion
 from inicio.forms import ProductoForm
+from .forms import ValorizacionForm
 from . import forms
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 
@@ -66,5 +68,32 @@ def buscarProducto(request, id):
     data= {'productos': producto}
     return render(request, 'comunas.html',data)
 
-def detallesProducto(request):
-    return render(request, 'detallesProducto.html')
+def detallesProducto(request, id):
+    producto = Producto.objects.get(id=id)
+    valorizaciones = Valorizacion.objects.filter(producto = producto)
+    
+    if request.method == 'POST':
+        form = ValorizacionForm(request.POST)
+        if form.is_valid():
+            valorizacion = form.save(commit=False)
+            valorizacion.producto = producto
+            valorizacion.save()
+            return HttpResponseRedirect(request.path_info)
+    else:
+        form = ValorizacionForm(initial={'producto': producto})
+        data = {
+        'producto': producto,
+        'valorizaciones': valorizaciones,
+        'form': form
+        }
+    return render(request, 'detallesProducto.html', data)
+
+def agregarValorizacion(request):
+    if request.method == 'POST':
+        form = ValorizacionForm(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form = ValorizacionForm()
+    
+    return render(request, 'detallesProducto.html', {'form': form})

@@ -18,13 +18,13 @@
         margin: 10px;
         border-radius: 10px;
       }
-      
-      p{
+
+      p {
         color: #ffffff;
       }
     </style>
   </head>
-  <body style="background-color: #9f59ff">
+  <body style="background-color: #9f59ff; color: #ffffff">
     <div class="container-fluid text-center top-background p-3">
       <h1 class="text-center text-white">
         <i class="fa-solid fa-shop" style="color: #ffffff"></i> Tiendita
@@ -66,35 +66,77 @@
         ><i class="fa-solid fa-eye" style="color: #ffffff"></i> Ver todo</a
       >
     </div>
-    <div class="container top-background rounded-4">
+    <div class="container top-background rounded-4 mb-3">
       <div class="row p-4 m-3">
-        <div class="col-4 p-3 rounded-4" style="background-color: #ffffff;">
-            <img src="https://media.solotodo.com/media/products/1718597_picture_1675760508.jpg" class="p-3" alt="" width="100%" height="auto">
+        <div class="col-4 p-3 rounded-4" style="background-color: #ffffff">
+          <img
+            src="{{ producto.img_url }}"
+            class="p-3"
+            alt=""
+            width="100%"
+            height="auto"
+          />
         </div>
-        <div class="col-8">
-          <h4 style="color: #ffffff">Categoria</h4>
-          <h1 style="color: #ffffff">Nombre producto</h1>
-          <h2 style="color: #ffffff">Marca</h2>
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur laborum odio facilis. Facere ipsam, animi ipsum beatae architecto alias libero fugit aspernatur quam cum. Similique recusandae optio culpa impedit in.</p>
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur laborum odio facilis. Facere ipsam, animi ipsum beatae architecto alias libero fugit aspernatur quam cum. Similique recusandae optio culpa impedit in.</p>
+        <div class="col-8 px-4">
+          <h4 >{{ producto.marca }}</h4>
+          <h1>{{ producto.name }}</h1>
+          <h1>${{ producto.price }}</h1>
+          <h2>Stock: {{ producto.stock }}</h2>
+          <h5>Detalles del producto</h5>
+          <p>{{ producto.description }}</p>
         </div>
       </div>
       <h2 class="pb-3" style="color: #ffffff">Comentarios</h2>
-      <div class="container">
+      <div class="container" style="color: #ffffff">
+        {% for valorizacion in valorizaciones %}
         <div class="row">
           <div class="col-md-1">
-            <img src="https://assets.stickpng.com/images/585e4beacb11b227491c3399.png" class="img-fluid" alt="Imagen del autor">
+            <img
+              src="https://assets.stickpng.com/images/585e4beacb11b227491c3399.png"
+              class="img-fluid"
+              alt="Imagen del autor"
+            />
           </div>
           <div class="col-md-11">
-            <h5 style="color: #ffffff">Nombre del Usuario</h5>
-            <p><i class="fa-solid fa-star"></i> 4 estrellas</p>
-            <p>Comentario Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tincidunt dui in dignissim feugiat. Vestibulum id eleifend velit.</p>
+            <h5>{{ valorizacion.autor }}</h5>
+            <p><i class="fa-solid fa-star"></i> {{ valorizacion.valoracion }} estrellas</p>
+            <p>
+              {{ valorizacion.comentario }}
+            </p>
           </div>
         </div>
+        {% empty %}
+        <p>No hay comentarios</p>
+        {% endfor %}
+        <h3>Comenta este producto:</h3>
+        <form method="post" class="pb-3" style="color: #ffffff;">
+          {% csrf_token %}
+          <div class="form-group mb-3 d-none">
+            {{ form.producto.label_tag }}
+            {{ form.producto }}
+            <div class="invalid-feedback">Este campo es obligatorio.</div>
+          </div>
+          <div class="form-group mb-3">
+            {{ form.valoracion.label_tag }}
+            {{ form.valoracion }}
+            <div class="invalid-feedback">Este campo es obligatorio.</div>
+          </div>
+          <div class="form-group mb-3">
+            {{ form.comentario.label_tag }}
+            {{ form.comentario }}
+            <div class="invalid-feedback">Este campo es obligatorio.</div>
+          </div>
+          <div class="form-group mb-3">
+            {{ form.autor.label_tag }}
+            {{ form.autor }}
+            <div class="invalid-feedback">Este campo es obligatorio.</div>
+          </div>
+          <button type="submit" class="btn btn-success">Enviar</button>
+        </form>
+        
+        
       </div>
-      
     </div>
-
   </body>
   <script
     src="https://kit.fontawesome.com/fb2d6595ca.js"

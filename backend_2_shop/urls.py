@@ -29,5 +29,5 @@ urlpatterns = [
     path('agregarProducto/', views.agregarProducto),
     path('actualizarProducto/<int:id>', views.cambiarProducto),
     path('eliminarProducto/<int:id>', views.quitarProducto),
-    path('productos/detalles', views.detallesProducto)
+    path('productos/detalles/<int:id>', views.detallesProducto)
 ]
