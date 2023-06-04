@@ -65,3 +65,6 @@ def buscarProducto(request, id):
     producto= Producto.objects.get(id=id)
     data= {'productos': producto}
     return render(request, 'comunas.html',data)
+
+def detallesProducto(request):
+    return render(request, 'detallesProducto.html')
