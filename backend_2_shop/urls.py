@@ -37,6 +37,8 @@ urlpatterns = [
     path('productos-api/marca/<str:marca>', views.productosViewByMarca),
 
     path('valorizaciones-api/', views.valorizacionView),
+    path('valorizaciones-api/autor/<str:autor>', views.valorizacionViewByAutor),
+    path('valorizaciones-api/producto/<int:producto_id>', views.valorizacionViewByProductoID),
 
     path('producto-api-admin/', views.producto_list),
     path('producto-api-admin/<int:producto_id>', views.producto_detail),

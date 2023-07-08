@@ -70,8 +70,19 @@ def productosViewByMarca(request, marca):
     return JsonResponse(data)
 
 def valorizacionView(request):
-    valorizacion = Valorizacion.objects.all()
-    data = {'valorizaciones': list(valorizacion.values('producto','valoracion','comentario','autor'))}
+    valorizaciones = Valorizacion.objects.all()
+    data = {'valorizaciones': list(valorizaciones.values('producto','valoracion','comentario','autor'))}
+    return JsonResponse(data)
+
+def valorizacionViewByProductoID(request, producto_id):
+    valorizaciones = Valorizacion.objects.filter(producto=producto_id)
+    data = {'valorizaciones': list(valorizaciones.values('producto','valoracion','comentario','autor'))}
+    return JsonResponse(data)
+
+
+def valorizacionViewByAutor(request, autor):
+    valorizaciones = Valorizacion.objects.filter(autor=autor)
+    data = {'valorizaciones': list(valorizaciones.values('producto','valoracion','comentario','autor'))}
     return JsonResponse(data)
 
 def listadoProductos(request):
