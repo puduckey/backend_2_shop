@@ -29,5 +29,16 @@ urlpatterns = [
     path('agregarProducto/', views.agregarProducto),
     path('actualizarProducto/<int:id>', views.cambiarProducto),
     path('eliminarProducto/<int:id>', views.quitarProducto),
-    path('productos/detalles/<int:id>', views.detallesProducto)
+    path('productos/detalles/<int:id>', views.detallesProducto),
+    
+    path('productos-api/', views.productoView),
+    path('productos-api/<int:producto_id>', views.productoViewByID),
+    path('productos-api/categoria/<int:categoria>', views.productosViewByCategoria),
+    path('productos-api/marca/<str:marca>', views.productosViewByMarca),
+
+    path('valorizaciones-api/', views.valorizacionView),
+
+    path('producto-api-admin/', views.producto_list),
+    path('producto-api-admin/<int:producto_id>', views.producto_detail),
+
 ]

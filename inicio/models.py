@@ -1,6 +1,9 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
+
+
 class Categoria(models.Model):
     nombre = models.CharField(max_length=50)
 
@@ -11,7 +14,7 @@ class Producto(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50)
     description = models.TextField()
-    marca = models.CharField(max_length=50, default='default_value')
+    marca = models.CharField(max_length=50, default='')
     price = models.PositiveIntegerField()
     stock = models.PositiveIntegerField()
     img_url = models.URLField()

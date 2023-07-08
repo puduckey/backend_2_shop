@@ -4,6 +4,6 @@ from django.contrib import admin
 
 # Register your models here.
 class ProductoAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name', 'description', 'price', 'stock', 'img_url']
+    list_display = ['id', 'name', 'description', 'marca', 'price', 'stock', 'img_url', 'categoria']
 
 admin.site.register(Producto, ProductoAdmin)
